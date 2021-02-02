@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+      function computerPlay() {
+          let result = Math.floor(Math.random() * 3) + 1;
+          return result;
+          }
+
+          function playRound(playerSelection, computerSelection) {
+            let universalPlayerSelection = playerSelection.toLowerCase();
+            if (universalPlayerSelection == "rock") {
+                universalPlayerSelection = 1;
+            } else if (universalPlayerSelection == "paper") {
+                universalPlayerSelection = 2;
+            } else if (universalPlayerSelection == "scissors") {
+                universalPlayerSelection = 3;
+            } else {
+                return "Player selection improperly converted.";
+            }
+
+            if (universalPlayerSelection == 1 && computerSelection == 1) {
+                let winner = 0; // rock and rock, tie
+                return winner;
+            } else if (universalPlayerSelection == 1 && computerSelection == 2) {
+                let winner = 2; //rock and paper, you lose
+                return winner;
+            } else if (universalPlayerSelection == 1 && computerSelection == 3) {
+                let winner = 1; // rock and scissors, you win
+                return winner;
+            } else if (universalPlayerSelection == 2 && computerSelection == 1) {
+                let winner = 1; // paper and rock, you win
+                return winner;
+            } else if (universalPlayerSelection == 2 && computerSelection == 2) {
+                let winner = 0; // paper and paper, tie
+                return winner;
+            } else if (universalPlayerSelection == 2 && computerSelection == 3) {
+                let winner = 2; // paper and scissors, you lose
+                return winner;
+            } else if (universalPlayerSelection == 3 && computerSelection == 1) {
+                let winner = 2; // scissors and rock, you lose
+                return winner;
+            } else if (universalPlayerSelection == 3 && computerSelection == 2) {
+                let winner = 1; // scissors and paper, you win
+                return winner;
+            } else if (universalPlayerSelection == 3 && computerSelection == 3) {
+                let winner = 0; //scissors and scissors, tie
+                return winner;
+            } else {
+                return "Something has gone terribly wrong with calculating winners."
+            }
+        }
+
+        function game() {
+            let tieCount = 0;
+            let userCount = 0;
+            let computerCount = 0;
+            let winner;
+
+            for (i = 0; i <= 4; i++) {
+            let playerSelection = prompt("Rock, paper, or scissors?");
+            let computerSelection = computerPlay();
+            let result = playRound(playerSelection, computerSelection); 
+                if (result == 0) {
+                tieCount = tieCount + 1;
+                console.log("You tied!");
+            } else if (result == 1) {
+                userCount = userCount + 1;
+                console.log("You won!");
+            } else if (result == 2) {
+                computerCount = computerCount + 1;
+                console.log("You lost!");
+            }
+            }
+            
+                console.log("The computer won " + computerCount + " times.");
+                console.log("You won " + userCount + " times.");
+                console.log("You tied " + tieCount + " times.");
+
+                if (computerCount > userCount) {
+                    console.log("The computer is the ultimate champion!");
+                } else if (userCount > computerCount) {
+                    console.log("You, my friend, are the ultimate champion.");
+                } else {
+                    console.log("Huh, no clear winner. What are the odds of this happening?");
+                }
+
+
+            }
+
+    
+
+  </script>
+</body>
+</html>
